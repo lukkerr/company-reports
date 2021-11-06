@@ -1,29 +1,24 @@
 package br.edu.ifpb.report.controller;
 
+import br.edu.ifpb.report.database.MainDatabaseConnector;
 import br.edu.ifpb.report.database.MysqlDatabaseConnector;
 
-public class TaxReport {
+public class TaxReport extends MainReport {
 
-    private MysqlDatabaseConnector connector = new MysqlDatabaseConnector();
+    private MainDatabaseConnector connector = new MysqlDatabaseConnector();
 
-    public void generate() {
-        createDatabaseConnection();
-        executeMySQLQuery();
-        convertToPDF();
-    }
-
-    public void createDatabaseConnection() {
+    public void createConnection() {
         System.out.println("Creating Database Connection...");
-        connector.openConnection();
+        connector.createConnection();
     }
 
-    public void executeMySQLQuery() {
+    public void executeQuery() {
         System.out.println("Executing MySQL Query...");
         String query = "SELECT * FROM taxes";
-        connector.executeQuery(query);
+        connector.runnerQuery(query);
     }
 
-    public void convertToPDF() {
+    public void convertReportTo() {
         System.out.println("Converting To PDF...");
     }
 }
